@@ -1,0 +1,28 @@
+# Local secrets & environment
+.env
+*.env
+*credential*
+*token*
+config.json
+
+# Sending logs / personal data caches (regenerate locally, NEVER commit)
+*.jsonl
+*.csv
+sent_log.jsonl
+replies_local.jsonl
+replies_local.xlsx
+emails_preview.md
+google_sheet_campaign.csv
+send_plan.csv
+campaign.jsonl
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

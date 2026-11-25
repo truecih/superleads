@@ -1,0 +1,31 @@
+{
+  "_comment": "Copy this file to config.json and fill in YOUR OWN details. Never commit config.json or any file containing credentials or customer data.",
+  "sender": {
+    "name": "Your Company Name",
+    "name_local": "Your Company Name (local language)",
+    "tagline": "Your short quality promise",
+    "products": "your main products, e.g. XLPE power cables 0.6/1kV - 110kV",
+    "certifications": "your certifications, e.g. ISO 9001:2015, CCC",
+    "applications": "where your products are used, e.g. construction, power, industry",
+    "address": "your full postal address",
+    "phone": "+00-0000000000",
+    "whatsapp": "+00-0000000000",
+    "email": "you@example.com",
+    "website": "www.example.com"
+  },
+  "campaign": {
+    "subjects": [
+      "About {{products}} - {{sender_name}}",
+      "Quotation request follow-up - {{sender_name}}",
+      "Supply of {{products}} for {{company}}"
+    ],
+    "greeting": "Dear {{company}} team,",
+    "body_template": "Dear {{company}} team,\n\nWe are {{sender_name}}, a manufacturer and supplier of {{products}}. Our products are used in {{applications}}, and we are certified with {{certifications}}.\n\n{{personal_line}}\n\n{{tagline}}\n\nIf you are interested, we can send our catalogue and a quotation for your requirements.\n\nBest regards,\n{{sender_name}}\n{{phone}} | {{email}} | {{website}}",
+    "language": "en",
+    "daily_cap": 20,
+    "min_delay_seconds": 240,
+    "jitter_seconds": 60,
+    "start_hour": 8,
+    "end_hour": 18
+  }
+}

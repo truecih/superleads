@@ -1,0 +1,530 @@
+{
+  "description": "Static user-visible output contract checks for the three Superleads business routes. These cases validate wording and route boundaries, not live source freshness.",
+  "validator": "scripts/validate_superleads_user_visible_output.py",
+  "cases": [
+    {
+      "name": "bulk customer development candidate pool sample",
+      "fixture": "evals/user_visible_outputs/bulk_customer_development_us_generator_aftermarket.md",
+      "route": "bulk_customer_development",
+      "expected": "pass",
+      "min_tables": 8,
+      "must_contain": [
+        "我理解你卖的是",
+        "本次优先找",
+        "本次不纳入",
+        "发现候选池样表",
+        "候选池不是正式开发名单",
+        "联系入口不等于采购意愿",
+        "候选主体",
+        "主体状态",
+        "业务关联",
+        "候选详情与回溯",
+        "已排除 / 仅作参考",
+        "联系方式汇总",
+        "搜索覆盖与收敛",
+        "风险与说明",
+        "已匹配主体",
+        "来源受限"
+      ],
+      "must_not_contain": [
+        "推荐客户",
+        "采购概率",
+        "产品出海市场分析",
+        "客户背调报告",
+        "社媒与公开职业线索",
+        "地图与经营地址",
+        "第三方贸易摘要"
+      ]
+    },
+    {
+      "name": "bulk customer development purchase intent pending pass",
+      "fixture": "evals/user_visible_outputs/pass_bulk_customer_purchase_intent_pending.md",
+      "route": "bulk_customer_development",
+      "expected": "pass",
+      "min_tables": 8,
+      "must_contain": [
+        "采购意愿待确认",
+        "候选池不是正式开发名单",
+        "候选主体",
+        "主体状态",
+        "业务关联",
+        "候选详情与回溯",
+        "待确认",
+        "来源受限",
+        "联系方式汇总",
+        "搜索覆盖与收敛",
+        "风险与说明",
+        "已匹配主体",
+        "本轮搜索组合",
+        "尚未覆盖的组合（可继续）",
+        "下一步可选",
+        "换搜索组合再找一批",
+        "标准开发名单（含社媒 / 地图 / 贸易记录 + 联系人归属核验；交付表格文件 + 配套报告；较慢；产量降、耗时增",
+        "只补社媒 / 地图 / 贸易记录信号（记录主体关联状态，不做深度联系人归属核验；较快，仍属候选池，不升级为正式核验）"
+      ],
+      "must_not_contain": [
+        "推荐客户",
+        "采购概率",
+        "客户背调报告",
+        "产品出海市场分析",
+        "社媒与公开职业线索",
+        "地图与经营地址",
+        "第三方贸易摘要"
+      ]
+    },
+    {
+      "name": "bulk customer development L1 public signal supplement fixture",
+      "fixture": "evals/user_visible_outputs/pass_bulk_customer_l1_public_signal_supplement.md",
+      "route": "bulk_customer_development",
+      "expected": "pass",
+      "min_tables": 11,
+      "must_contain": [
+        "发现候选池样表",
+        "候选主体",
+        "主体状态",
+        "业务关联",
+        "候选详情与回溯",
+        "社媒与公开职业线索",
+        "地图与经营地址",
+        "第三方贸易摘要",
+        "第三方贸易数据聚合站公开摘要，非官方海关记录"
+      ],
+      "must_not_contain": [
+        "推荐客户",
+        "采购概率",
+        "客户背调报告",
+        "产品出海市场分析"
+      ]
+    },
+    {
+      "name": "customer background Chilly's sample",
+      "fixture": "evals/user_visible_outputs/customer_background_chillys.md",
+      "route": "customer_background_research",
+      "expected": "pass",
+      "min_tables": 6,
+      "must_contain": [
+        "一句话先说清",
+        "客户一眼看懂",
+        "客户、品牌与关联方",
+        "公开联系入口与关联依据",
+        "信息从哪里来",
+        "董事不等于采购负责人",
+        "公开信息不能证明当前采购需求"
+      ],
+      "must_not_contain": [
+        "候选客户池",
+        "产品出海市场分析",
+        "采购概率",
+        "推荐客户"
+      ]
+    },
+    {
+      "name": "customer background multiple artifacts names only",
+      "fixture": "evals/user_visible_outputs/pass_customer_background_multiple_artifacts.md",
+      "route": "customer_background_research",
+      "expected": "pass",
+      "min_tables": 6,
+      "must_contain": [
+        "已生成 Markdown 报告：bernard_background.md",
+        "已生成 CSV 工作簿：bernard_background.csv"
+      ],
+      "must_not_contain": [
+        "C:\\Users\\",
+        "/home/",
+        "/tmp/",
+        "file://"
+      ]
+    },
+    {
+      "name": "product outbound market Xing Heng sample",
+      "fixture": "evals/user_visible_outputs/product_market_xingheng_lifepo4_us.md",
+      "route": "product_outbound_market_analysis",
+      "expected": "pass",
+      "min_tables": 7,
+      "must_contain": [
+        "先看贸易前提",
+        "本轮默认贸易口径",
+        "目标市场",
+        "实际起运港",
+        "如果默认口径不对",
+        "本轮结论边界",
+        "Google Trends",
+        "未执行",
+        "候选 HTSUS",
+        "COO / 原产地证明",
+        "海运拼箱",
+        "国际快递",
+        "不能因用户未提供 COO 就写“不需要”"
+      ],
+      "must_not_contain": [
+        "候选客户池",
+        "客户背调报告",
+        "推荐客户",
+        "目标客户群",
+        "值得进入",
+        "推荐报价"
+      ]
+    },
+    {
+      "name": "fail bulk customer recommendation and internal terms",
+      "fixture": "evals/user_visible_outputs/fail_bulk_customer_recommendation_and_internal_terms.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 2,
+      "expected_error_codes": [
+        "user_visible_route_crossed",
+        "user_visible_internal_language",
+        "user_visible_value_judgment"
+      ],
+      "must_contain": [
+        "我理解你卖的是",
+        "候选客户"
+      ]
+    },
+    {
+      "name": "fail bulk customer adapter error wording",
+      "fixture": "evals/user_visible_outputs/fail_bulk_customer_adapter_error_language.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 2,
+      "expected_error_codes": [
+        "user_visible_internal_language"
+      ]
+    },
+    {
+      "name": "fail bulk customer missing basis status",
+      "fixture": "evals/user_visible_outputs/fail_bulk_customer_missing_basis_status.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 2,
+      "expected_error_codes": [
+        "user_visible_missing_required_text",
+        "user_visible_status_missing"
+      ],
+      "must_contain": [
+        "我理解你卖的是",
+        "候选客户"
+      ]
+    },
+    {
+      "name": "fail bulk customer source restricted promoted basis",
+      "fixture": "evals/user_visible_outputs/fail_bulk_customer_source_restricted_promoted_basis.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 7,
+      "expected_error_codes": [
+        "bulk_basis_status_source_restricted_promoted"
+      ],
+      "must_contain": [
+        "我理解你卖的是",
+        "候选客户",
+        "业务相关性",
+        "依据状态",
+        "可能相关",
+        "已有明确依据",
+        "来源受限"
+      ]
+    },
+    {
+      "name": "fail bulk customer excluded source restricted promoted basis",
+      "fixture": "evals/user_visible_outputs/fail_bulk_customer_excluded_source_restricted_promoted_basis.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 8,
+      "expected_error_codes": [
+        "bulk_basis_status_source_restricted_promoted"
+      ],
+      "must_contain": [
+        "候选主体",
+        "主体状态",
+        "业务关联",
+        "候选详情与回溯",
+        "已排除 / 仅作参考",
+        "依据状态",
+        "已有明确依据",
+        "来源受限"
+      ]
+    },
+    {
+      "name": "fail bulk customer real UAT internal basis status",
+      "fixture": "evals/user_visible_outputs/fail_bulk_customer_real_uat_internal_basis_status.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 7,
+      "expected_error_codes": [
+        "user_visible_basis_status_internal_leak"
+      ],
+      "must_contain": [
+        "我理解你卖的是",
+        "本次优先找",
+        "候选客户",
+        "业务相关性",
+        "依据状态",
+        "已观察",
+        "已观察；需确认",
+        "已观察；来源受限",
+        "联系方式汇总",
+        "搜索覆盖与收敛",
+        "风险与说明"
+      ]
+    },
+    {
+      "name": "fail customer background procurement claim",
+      "fixture": "evals/user_visible_outputs/fail_customer_background_procurement_claim.md",
+      "route": "customer_background_research",
+      "expected": "fail",
+      "min_tables": 6,
+      "expected_error_codes": [
+        "user_visible_route_crossed",
+        "user_visible_internal_language",
+        "user_visible_evidence_upgrade"
+      ],
+      "must_contain": [
+        "一句话先说清",
+        "客户一眼看懂"
+      ]
+    },
+    {
+      "name": "fail product market value and final rate",
+      "fixture": "evals/user_visible_outputs/fail_product_market_value_and_final_rate.md",
+      "route": "product_outbound_market_analysis",
+      "expected": "fail",
+      "min_tables": 6,
+      "expected_error_codes": [
+        "user_visible_value_judgment",
+        "user_visible_evidence_upgrade"
+      ],
+      "must_contain": [
+        "先看贸易前提",
+        "目标销售国家/地区",
+        "候选 HTSUS"
+      ]
+    },
+    {
+      "name": "product market negated guardrails and source names pass",
+      "fixture": "evals/user_visible_outputs/product_market_negated_guardrails_and_source_names.md",
+      "route": "product_outbound_market_analysis",
+      "expected": "pass",
+      "min_tables": 6,
+      "must_contain": [
+        "The Telegraph",
+        "Photograph",
+        "paragraph 3",
+        "evaluation plan",
+        "不判断是否值得进入",
+        "不做推荐客户排序，也不给采购概率",
+        "Made in 等于 COO 是错误理解"
+      ],
+      "must_not_contain": [
+        "The Tele资料包",
+        "Photo资料包",
+        "para资料包",
+        "检查uation",
+        "采购概率 80%"
+      ]
+    },
+    {
+      "name": "product market business terms remain visible",
+      "fixture": "evals/user_visible_outputs/pass_product_market_adapter_py_psi_terms.md",
+      "route": "product_outbound_market_analysis",
+      "expected": "pass",
+      "min_tables": 6,
+      "must_contain": [
+        "电源适配器",
+        "example.com.py",
+        "装运前预检报告",
+        "准入",
+        "进口税费",
+        "运输方式"
+      ]
+    },
+    {
+      "name": "fail user visible positive recommendation still blocked",
+      "fixture": "evals/user_visible_outputs/fail_user_visible_positive_recommendation.md",
+      "route": "product_outbound_market_analysis",
+      "expected": "fail",
+      "min_tables": 6,
+      "expected_error_codes": [
+        "user_visible_route_crossed",
+        "user_visible_value_judgment",
+        "user_visible_evidence_upgrade"
+      ],
+      "must_contain": [
+        "先看贸易前提",
+        "目标销售国家/地区",
+        "建议进入该市场",
+        "推荐客户 A",
+        "采购概率 80%"
+      ]
+    },
+    {
+      "name": "fail product market internal status tokens leaked",
+      "fixture": "evals/user_visible_outputs/fail_product_market_internal_status_tokens.md",
+      "route": "product_outbound_market_analysis",
+      "expected": "fail",
+      "min_tables": 6,
+      "expected_error_codes": [
+        "user_visible_internal_status_token"
+      ],
+      "must_contain": [
+        "先看贸易前提",
+        "目标销售国家/地区",
+        "依据状态",
+        "technical_docs_required",
+        "stale_needs_recheck",
+        "user_not_provided_but_required"
+      ]
+    },
+    {
+      "name": "fail customer background positive procurement person",
+      "fixture": "evals/user_visible_outputs/fail_customer_background_positive_procurement_person.md",
+      "route": "customer_background_research",
+      "expected": "fail",
+      "min_tables": 6,
+      "expected_error_codes": [
+        "user_visible_evidence_upgrade"
+      ],
+      "must_contain": [
+        "一句话先说清",
+        "客户一眼看懂",
+        "Founder 就是采购负责人",
+        "已确认有采购需求"
+      ]
+    },
+    {
+      "name": "fail bulk customer exhaustive coverage promise",
+      "fixture": "evals/user_visible_outputs/fail_bulk_customer_coverage_overclaim.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 0,
+      "expected_error_codes": [
+        "user_visible_coverage_overclaim"
+      ],
+      "must_contain": [
+        "全部找到",
+        "全网覆盖",
+        "无遗漏"
+      ]
+    },
+    {
+      "name": "fail bulk customer VPN node recommendation",
+      "fixture": "evals/user_visible_outputs/fail_bulk_customer_vpn_node_recommendation.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 0,
+      "expected_error_codes": [
+        "user_visible_coverage_overclaim"
+      ],
+      "must_contain": [
+        "切换到爱尔兰节点",
+        "VPN",
+        "代理"
+      ]
+    },
+    {
+      "name": "fail customer background suspected trade claim",
+      "fixture": "evals/user_visible_outputs/fail_customer_background_suspected_trade_claim.md",
+      "route": "customer_background_research",
+      "expected": "fail",
+      "min_tables": 6,
+      "expected_error_codes": [
+        "user_visible_evidence_upgrade"
+      ],
+      "must_contain": [
+        "一句话先说清",
+        "客户一眼看懂",
+        "该客户从中国采购"
+      ]
+    },
+    {
+      "name": "fail bulk customer standard list missing canonical structure",
+      "fixture": "evals/user_visible_outputs/fail_bulk_customer_standard_list_missing_structure.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 0,
+      "expected_error_codes": [
+        "user_visible_standard_list_structure_missing"
+      ],
+      "must_contain": [
+        "本次输出为标准开发名单"
+      ]
+    },
+    {
+      "name": "fail bulk customer fabricated standard list section names",
+      "fixture": "evals/user_visible_outputs/fail_bulk_customer_fabricated_standard_list.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 0,
+      "expected_error_codes": [
+        "user_visible_standard_list_noncanonical_structure"
+      ],
+      "must_contain": [
+        "概览",
+        "待确认名单",
+        "产品核验",
+        "来源说明"
+      ]
+    },
+    {
+      "name": "bulk customer formal delivery fallback stays a chat worktable",
+      "fixture": "evals/user_visible_outputs/pass_bulk_customer_formal_delivery_fallback.md",
+      "route": "bulk_customer_development",
+      "expected": "pass",
+      "min_tables": 3,
+      "must_contain": [
+        "对话内工作表",
+        "本环境未运行确定性校验",
+        "接洽核实项",
+        "不等同于候选质量问题",
+        "待确认",
+        "风险与说明",
+        "下一步可选",
+        "补充待确认项的公开核验或补公开信号"
+      ],
+      "must_not_contain": [
+        "本次输出为标准开发名单",
+        "客户信息总表",
+        "社媒与公开职业线索",
+        "地图与经营地址",
+        "第三方贸易摘要"
+      ]
+    },
+    {
+      "name": "bulk standard delivery keeps part and import role pending",
+      "fixture": "evals/user_visible_outputs/pass_bulk_customer_l2_pending_part_and_import_role.md",
+      "route": "bulk_customer_development",
+      "expected": "pass",
+      "min_tables": 6,
+      "must_contain": [
+        "本次输出为标准开发名单",
+        "官网未列出精确料号",
+        "未公开进口身份",
+        "接洽核实项",
+        "公开信号已匹配当前范围"
+      ]
+    },
+    {
+      "name": "fail bulk customer treating unavailable signals as l2 disqualification",
+      "fixture": "evals/user_visible_outputs/fail_bulk_customer_l2_unavailable_requirement.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 0,
+      "expected_error_codes": [
+        "bulk_l2_unavailable_requirement_as_disqualification"
+      ],
+      "must_contain": [
+        "精确料号",
+        "公开进口身份",
+        "不合格"
+      ]
+    },
+    {
+      "name": "fail trace identifier in agent-authored output",
+      "fixture": "evals/user_visible_outputs/fail_trace_user_visible_leak.md",
+      "route": "bulk_customer_development",
+      "expected": "fail",
+      "min_tables": 0,
+      "expected_error_codes": ["trace_user_visible_internal_leak"]
+    }
+  ]
+}

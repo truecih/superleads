@@ -1,0 +1,252 @@
+{
+  "description": "Generated Markdown delivery checks for the three Superleads business routes. These cases prove the delivery command can render audited graph/workbook projections into user-visible Markdown and then pass the Slice T wording contract.",
+  "generator": "scripts/export_superleads_markdown.py",
+  "validator": "scripts/validate_superleads_user_visible_output.py",
+  "cases": [
+    {
+      "name": "bulk customer development generated Markdown",
+      "fixture": "evals/fixtures/pass_default_discovery_candidate_pool.json",
+      "route": "auto",
+      "expected_route": "bulk_customer_development",
+      "expected": "pass",
+      "min_tables": 8,
+      "must_contain": [
+        "我理解你卖的是",
+        "本次优先找",
+        "本次不纳入",
+        "判断依据将重点看",
+        "发现候选池样表",
+        "候选池不是正式开发名单",
+        "| 候选主体 | 国家 / 可能角色 | 主体状态 | 业务关联 | 当前关键公开信号 | 公开联系入口 |",
+        "候选详情与回溯",
+        "| 候选主体 | 品牌 / 域名 | 主体归并依据 | 业务关联依据 | 来源 / 状态 | 待确认与冲突 |",
+        "联系入口不等于采购意愿",
+        "来源 / 来源状态",
+        "业务相关性",
+        "依据状态",
+        "公开信号已匹配当前范围",
+        "已排除 / 仅作参考",
+        "联系方式汇总",
+        "联系人 / 公开职业线索",
+        "待确认原因",
+        "Jordan Lee",
+        "Sales Manager",
+        "未记录可用入口",
+        "待确认归属",
+        "公开职位线索可见，但需自行核实是否属于该公司及当前职责。",
+        "https://alpha.example/contact",
+        "搜索覆盖与收敛",
+        "风险与说明",
+        "已有明确依据",
+        "来源受限"
+      ],
+      "must_not_contain": [
+        "推荐客户",
+        "| 分区 | 候选客户 | 品牌名称 | 国家/地区 | 可能客户角色 | 当前看到的业务信号 | 业务相关性 | 依据状态 | 可用联系入口 | 还要确认什么 | 来源 / 来源状态 |",
+        "采购概率",
+        "客户背调报告",
+        "产品出海市场分析",
+        "EvidenceCard",
+        "SearchLog",
+        "| Jordan Lee | person_name |",
+        "社媒与公开职业线索",
+        "地图与经营地址",
+        "第三方贸易摘要"
+      ]
+    },
+    {
+      "name": "bulk customer development explicit L1 public signal supplement",
+      "fixture": "evals/fixtures/pass_default_discovery_candidate_pool.json",
+      "route": "auto",
+      "expected_route": "bulk_customer_development",
+      "expected": "pass",
+      "include_public_signal_sections": true,
+      "min_tables": 11,
+      "must_contain": [
+        "发现候选池样表",
+        "社媒与公开职业线索",
+        "地图与经营地址",
+        "第三方贸易摘要",
+        "第三方贸易数据聚合站公开摘要，非官方海关记录",
+        "| 公司名称 | 平台 | 页面类型 | 页面名称 / 人员 | 公开职位或部门 | 公开联系入口 | 主体关联依据 | 来源状态 | 观察时间 | 来源 / 链接 | 不能推出的内容 |",
+        "| 公司名称 | 地图平台 | 商户名称 | 地址 | 公开电话 | 经营场景 | 主体关联依据 | 来源状态 | 观察时间 | 来源 / 链接 | 不能推出的内容 |",
+        "| 公司名称 | 状态 | 进出口方向 | 对方名称 | 记录日期 | 产品名称或 HS | 起运地或目的地 | 主体匹配状态 | 来源 / 链接 | 观察时间 | 不能推出的内容 |"
+      ],
+      "must_not_contain": [
+        "推荐客户",
+        "采购概率",
+        "EvidenceCard",
+        "SearchLog"
+      ]
+    },
+    {
+      "name": "bulk generated Markdown replacement boundaries",
+      "fixture": "evals/fixtures/pass_default_discovery_markdown_replacement_boundaries.json",
+      "route": "auto",
+      "expected_route": "bulk_customer_development",
+      "expected": "pass",
+      "min_tables": 8,
+      "must_contain": [
+        "The Telegraph",
+        "Photograph",
+        "paragraph",
+        "evaluation",
+        "资料包",
+        "检查",
+        "证据记录",
+        "依据状态",
+        "联系方式汇总",
+        "搜索覆盖与收敛",
+        "已排除 / 仅作参考",
+        "风险与说明"
+      ],
+      "must_not_contain": [
+        "The Tele资料包",
+        "Photo资料包",
+        "para资料包",
+        "检查uation",
+        "EvidenceCard",
+        " graph ",
+        " eval "
+      ]
+    },
+    {
+      "name": "bulk Markdown redacts held contact values",
+      "fixture": "evals/fixtures/pass_hold_inferred_filtered_export.json",
+      "route": "bulk_customer_development",
+      "expected": "pass",
+      "delivery_status": "standard_development_list",
+      "min_tables": 6,
+      "must_contain": [
+        "本次输出为标准开发名单",
+        "客户信息总表",
+        "联系方式汇总",
+        "公开信息与待核查事项",
+        "待核查事项"
+      ],
+      "must_not_contain": [
+        "sales@example.com",
+        "不可导出",
+        "hold_inferred"
+      ]
+    },
+    {
+      "name": "customer background generated Markdown",
+      "fixture": "evals/fixtures/pass_customer_background_chillys_markdown.json",
+      "route": "auto",
+      "expected_route": "customer_background_research",
+      "expected": "pass",
+      "min_tables": 6,
+      "must_contain": [
+        "一句话先说清",
+        "客户一眼看懂",
+        "客户、品牌与关联方",
+        "公开信息不能证明当前采购需求或采购负责人",
+        "董事、Founder 或 Owner 线索不等于采购负责人",
+        "公开联系入口与关联依据",
+        "待核验事项与来源限制",
+        "信息从哪里来",
+        "来源受限"
+      ],
+      "must_not_contain": [
+        "候选客户池",
+        "产品出海市场分析",
+        "采购概率",
+        "推荐客户",
+        "EvidenceCard",
+        "SearchLog"
+      ]
+    },
+    {
+      "name": "product outbound market generated Markdown",
+      "fixture": "evals/fixtures/market_pass_xingheng_minimum_boundary.json",
+      "route": "auto",
+      "expected_route": "product_outbound_market_analysis",
+      "expected": "pass",
+      "min_tables": 7,
+      "must_contain": [
+        "先看贸易前提",
+        "本轮默认贸易口径",
+        "目标市场",
+        "实际起运港",
+        "如果默认口径不对",
+        "本轮结论边界",
+        "产品档案与触发项",
+        "长期需求与搜索趋势",
+        "产品准入与合规要求",
+        "进口税费",
+        "运输方式、路线、港口与申报节点",
+        "信息来源与待确认事项",
+        "候选 HTSUS",
+        "UN38.3",
+        "SDS",
+        "不能",
+        "依据状态",
+        "需补充资料",
+        "按已知数据计算",
+        "可作为线索"
+      ],
+      "must_not_contain": [
+        "候选客户池",
+        "客户背调报告",
+        "推荐客户",
+        "目标客户群",
+        "值得进入",
+        "推荐报价",
+        "最佳路线",
+        "承诺交期",
+        "EvidenceCard",
+        "SearchLog",
+        "运输方式补充：海运拼箱 / 国际快递",
+        "| 海运拼箱 | 待确认 |",
+        "| 国际快递 | 待确认 |",
+        "原产/出口国："
+      ]
+    },
+    {
+      "name": "product outbound market scoped certification Markdown",
+      "fixture": "evals/fixtures/market_pass_scope_certification.json",
+      "route": "product_outbound_market_analysis",
+      "expected_route": "product_outbound_market_analysis",
+      "expected": "pass",
+      "min_tables": 4,
+      "must_contain": [
+        "本轮范围：只做了「目标国准入与认证要求」一项。",
+        "本轮未执行：",
+        "市场事实总览",
+        "产品档案与触发项",
+        "产品准入与合规要求",
+        "信息来源与待确认事项"
+      ],
+      "must_not_contain": [
+        "未覆盖：",
+        "## 先看贸易前提（本轮默认贸易口径）",
+        "## 资料时效 / Freshness",
+        "## 来源权威性 / Authority",
+        "## 进口税费",
+        "## 运输方式、路线、港口与申报节点",
+        "## 长期需求与搜索趋势",
+        "## 公开市场资料与行业信息",
+        "## 线上市场与价格参考",
+        "## 季节、节日与销售窗口",
+        "## 出口国要求",
+        "## 近期外部因素",
+        "进口税费 / 最终 HTSUS / 最终税率",
+        "运输方式、路线、港口与申报节点 / 包装资料",
+        "运输方式、路线、港口与申报节点 / 起运节点",
+        "HTS candidate path",
+        "先做市场、准入、税费、出口与物流分析"
+      ]
+    },
+    {
+      "name": "fail product market unsafe graph blocked before Markdown",
+      "fixture": "evals/fixtures/market_fail_candidate_htsus_as_final_rate.json",
+      "route": "auto",
+      "expected_route": "product_outbound_market_analysis",
+      "expected": "fail",
+      "expected_error_codes": [
+        "market_candidate_hs_promoted_to_final"
+      ]
+    }
+  ]
+}

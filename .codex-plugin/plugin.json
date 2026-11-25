@@ -1,0 +1,39 @@
+{
+  "name": "superleads",
+  "version": "0.3.3",
+  "description": "Foreign-trade customer discovery Skill Suite with public signals and optional deep verification.",
+  "author": {
+    "name": "Fleix"
+  },
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "keywords": [
+    "foreign-trade",
+    "lead-research",
+    "contact-intelligence",
+    "evidence",
+    "sales-leads",
+    "workbooks"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Superleads",
+    "shortDescription": "批量开发客户、单一客户背调、目标市场分析。",
+    "longDescription": "Superleads 面向外贸业务，支持批量开发客户、单一客户背调和目标市场分析。",
+    "developerName": "Fleix",
+    "category": "Productivity",
+    "websiteURL": "https://github.com/fleixweb/superleads",
+    "privacyPolicyURL": "https://github.com/fleixweb/superleads/blob/master/docs/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/fleixweb/superleads/blob/master/docs/TERMS.md",
+    "capabilities": [
+      "Research",
+      "Files",
+      "Write"
+    ],
+    "brandColor": "#2563EB",
+    "defaultPrompt": [
+      "批量发现公开客户信息（只交付带来源状态的候选池，不推荐客户）",
+      "背调指定公司、品牌、域名或地址（事实受公开来源约束）",
+      "分析产品出口到目标市场的客观信息（不判断是否进入市场）"
+    ]
+  }
+}

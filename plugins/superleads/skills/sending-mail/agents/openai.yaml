@@ -1,0 +1,4 @@
+interface:
+  display_name: "发信入口：Gmail SMTP 发送与定时发送"
+  short_description: "在明确授权后通过个人 Gmail 发送/定时发送单封或小批量邮件；凭据仅来自环境变量，不读取或修改邮箱"
+  default_prompt: "Use $sending-mail only for an explicit outbound send or scheduled-send setup. Require confirmed recipient/content/frequency and env-supplied Gmail App Password; dry-run before --send; never write credentials to files or graph."

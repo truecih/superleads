@@ -1,0 +1,70 @@
+{
+  "extends": "pass_minimal_graph.json",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/runs/0/platform",
+      "value": "codex_cli"
+    },
+    {
+      "op": "add",
+      "path": "/runs/0/capabilities",
+      "value": {
+        "search.web": "available",
+        "source.open": "available",
+        "browser.render": "unknown"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/observations/0/concrete_tool",
+      "value": "web__run"
+    },
+    {
+      "op": "add",
+      "path": "/runs/0/capability_adapter_report",
+      "value": {
+        "platform": "codex_cli",
+        "adapter": {
+          "adapter_id": "codex_cli_web_run",
+          "adapter_version": "1"
+        },
+        "detected_at": "2026-08-14T00:00:00Z",
+        "detection": "current_run_web__run_search_query_and_open",
+        "host_tools": {
+          "web__run": {
+            "status": "available",
+            "operations": {
+              "search_query": {
+                "status": "verified"
+              },
+          "open": {
+            "status": "verified",
+            "original_url": "https://example.com",
+            "source_id": "src_001",
+            "observation_id": "obs_001",
+            "source_title": "Example Buyer Contact",
+            "raw_excerpt": "Example Buyer sells sample product. Example Buyer Contact: sales@example.com",
+            "excerpt_locator": "body"
+          }
+            }
+          }
+        },
+        "canonical_capabilities": {
+          "search.web": "available",
+          "source.open": "available"
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/review_attestations/0/input_graph_hash",
+      "value": "a131cb0b7e2f094214d95b9ac6e554a547d86f9faf27b00ca97121c4c6e66b80"
+    },
+    {
+      "op": "replace",
+      "path": "/review_attestations/0/reviewed_subject_hash",
+      "value": "a131cb0b7e2f094214d95b9ac6e554a547d86f9faf27b00ca97121c4c6e66b80"
+    }
+  ]
+}
